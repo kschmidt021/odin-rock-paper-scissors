@@ -70,11 +70,12 @@ function playRound(playerSelection, computerSelection) {
     return message;
 }
 
+//plays the best of 5 game
 function game() {
-    // game will stop after 5 rounds are played
+// game will stop after either the user or computer wins 3 rounds (best of 5)
     let pWins = 0;
     let cWins = 0;
-    for (i = 0; i < 5; i++) {
+    while (pWins < 3, cWins < 3) {
     // initialize player and computer selection variables 
     // and call their functions
         computerSelection = getComputerChoice();
@@ -100,4 +101,12 @@ function game() {
         console.log(computerSelection)
         alert(results);
             }
+// alert the results of game
+    if (pWins == 3) {
+        alert(`Congratulations! You win!`)
+    } else if (cWins == 3) {
+        alert(`You lose. Score one for the machines.`)
+    } else {
+        console.log("error in game()")
+    }
         }
