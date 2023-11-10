@@ -9,8 +9,8 @@ function getPlayerChoice() {
         || playerChoice === "scissors") {
             playerChoice = playerChoice.toLowerCase();
             return playerChoice;
-        } else {
-            console.log("invalid input from player.");
+        } else if (playerChoice === null){
+            return null;
         }
 }
 
@@ -80,6 +80,9 @@ function game() {
     // and call their functions
         computerSelection = getComputerChoice();
         playerSelection = getPlayerChoice();
+        if (playerSelection === null) {
+            return;
+        }
     // create variable for results
         results = playRound(playerSelection, computerSelection)
     // count wins for computer and player
@@ -104,8 +107,10 @@ function game() {
 // alert the results of game
     if (pWins == 3) {
         alert(`Congratulations! You win!`)
+        return
     } else if (cWins == 3) {
         alert(`You lose. Score one for the machines.`)
+        return
     } else {
         console.log("error in game()")
     }
