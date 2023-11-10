@@ -9,7 +9,16 @@ function getPlayerChoice() {
     if (playerChoice === null){
         return null;
     }
+// sets up playerChoice to be evaluated in all lowercase
     playerChoice = playerChoice.toLowerCase();
+    while (playerChoice != "rock" 
+        && playerChoice != "scissors" 
+        && playerChoice != "paper" 
+        && playerChoice != "r" 
+        && playerChoice != "p" 
+        && playerChoice != "s") {
+            playerChoice = prompt(`Please enter "Rock" "Paper" or "Scissors"`);
+        }
 // formats the playerChoice string to Correct Case and returns
     if (playerChoice == "rock"
         || playerChoice == "paper"
@@ -41,12 +50,6 @@ function getPlayerChoice() {
             notFirstLetter = playerChoice.slice(1);
             playerChoice = (firstLetter + notFirstLetter);
             return playerChoice;
-    // Returns null if player put in an invalid message
-    // Plan is to update this logic to a while loop which will
-    // show the input box over and over until a valid response or a cancel
-        } else {
-            alert(`${playerChoice} is an invalid response. Please type "rock" "paper" or "scissors"`)
-            return null;
         }
 }
 
