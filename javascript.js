@@ -23,18 +23,21 @@ function getPlayerChoice() {
         } else if (playerChoice == "r"){
             playerChoice = "rock"
             firstLetter = playerChoice.charAt(0);
+            firstLetter = firstLetter.toUpperCase();
             notFirstLetter = playerChoice.slice(1);
             playerChoice = (firstLetter + notFirstLetter);
             return playerChoice;
         } else if (playerChoice == "p"){
             playerChoice = "paper"
             firstLetter = playerChoice.charAt(0);
+            firstLetter = firstLetter.toUpperCase();
             notFirstLetter = playerChoice.slice(1);
             playerChoice = (firstLetter + notFirstLetter);
             return playerChoice;
         } else if (playerChoice == "s"){
             playerChoice = "scissors"
             firstLetter = playerChoice.charAt(0);
+            firstLetter = firstLetter.toUpperCase();
             notFirstLetter = playerChoice.slice(1);
             playerChoice = (firstLetter + notFirstLetter);
             return playerChoice;
