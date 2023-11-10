@@ -4,12 +4,45 @@ game();
 // store their result
 function getPlayerChoice() {
     playerChoice = prompt("Rock, Paper, or Scissors?");
-    if (playerChoice === "rock"
-        || playerChoice === "paper"
-        || playerChoice === "scissors") {
-            playerChoice = playerChoice.toLowerCase();
+// Returns null value if player clicks cancel, which later 
+// allows the game to fully abort
+    if (playerChoice === null){
+        return null;
+    }
+    playerChoice = playerChoice.toLowerCase();
+// formats the playerChoice string to Correct Case and returns
+    if (playerChoice == "rock"
+        || playerChoice == "paper"
+        || playerChoice == "scissors") {
+            firstLetter = playerChoice.charAt(0);
+            firstLetter = firstLetter.toUpperCase();
+            notFirstLetter = playerChoice.slice(1);
+            playerChoice = (firstLetter + notFirstLetter);
             return playerChoice;
-        } else if (playerChoice === null){
+    // allows for shorthand for testing and the impatient
+        } else if (playerChoice == "r"){
+            playerChoice = "rock"
+            firstLetter = playerChoice.charAt(0);
+            notFirstLetter = playerChoice.slice(1);
+            playerChoice = (firstLetter + notFirstLetter);
+            return playerChoice;
+        } else if (playerChoice == "p"){
+            playerChoice = "paper"
+            firstLetter = playerChoice.charAt(0);
+            notFirstLetter = playerChoice.slice(1);
+            playerChoice = (firstLetter + notFirstLetter);
+            return playerChoice;
+        } else if (playerChoice == "s"){
+            playerChoice = "scissors"
+            firstLetter = playerChoice.charAt(0);
+            notFirstLetter = playerChoice.slice(1);
+            playerChoice = (firstLetter + notFirstLetter);
+            return playerChoice;
+    // Returns null if player put in an invalid message
+    // Plan is to update this logic to a while loop which will
+    // show the input box over and over until a valid response or a cancel
+        } else {
+            alert(`${playerChoice} is an invalid response. Please type "rock" "paper" or "scissors"`)
             return null;
         }
 }
@@ -18,11 +51,11 @@ function getPlayerChoice() {
 function getComputerChoice() {
     computerChoice =  Math.floor(Math.random() * 3);
     if (computerChoice === 0) {
-        computerChoice = "rock";
+        computerChoice = "Rock";
     } else if (computerChoice === 1) {
-        computerChoice = "paper";
+        computerChoice = "Paper";
     } else if (computerChoice === 2) {
-        computerChoice = "scissors";
+        computerChoice = "Scissors";
     } else {
         console.log("bad output from computerChoice");
         return;
@@ -32,26 +65,26 @@ function getComputerChoice() {
 
 //compare results
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection === "rock") {
-        if (computerSelection === "paper") {
+    if (playerSelection === "Rock") {
+        if (computerSelection === "Paper") {
             results = "Lose";
-        } else if (computerSelection === "scissors"){
+        } else if (computerSelection === "Scissors"){
             results = "Win";
         } else {
             results = "Tie";
         }
-    } else if (playerSelection === "paper") {
-        if (computerSelection === "scissors") {
+    } else if (playerSelection === "Paper") {
+        if (computerSelection === "Scissors") {
             results = "Lose";
-        } else if (computerSelection === "rock"){
+        } else if (computerSelection === "Rock"){
             results = "Win";
         } else {
             results = "Tie";
         }
-    } else if (playerSelection === "scissors") {
-        if (computerSelection === "rock") {
+    } else if (playerSelection === "Scissors") {
+        if (computerSelection === "Rock") {
             results = "Lose";
-        } else if (computerSelection === "paper"){
+        } else if (computerSelection === "Paper"){
             results = "Win";
         } else {
             results = "Tie";
