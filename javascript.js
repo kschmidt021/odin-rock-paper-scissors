@@ -111,7 +111,7 @@ function game() {
 // game will stop after either the user or computer wins 3 rounds (best of 5)
     let pWins = 0;
     let cWins = 0;
-    while (pWins < 3, cWins < 3) {
+    while (pWins < 3 && cWins < 3) {
     // initialize player and computer selection variables 
     // and call their functions
         computerSelection = getComputerChoice();
