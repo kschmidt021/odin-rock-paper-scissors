@@ -1,18 +1,16 @@
-// Prompt user to type "rock" "paper" or "scissors"
-playerChoice = "RoCK"
-
-console.log(game());
+// call game function
+game();
 
 // store their result
 function getPlayerChoice() {
-    /* document.getElementById("playerSelection").value;*/
-    playerChoice = playerChoice.toLowerCase();
+    playerChoice = prompt("Rock, Paper, or Scissors?");
     if (playerChoice === "rock"
         || playerChoice === "paper"
         || playerChoice === "scissors") {
+            playerChoice = playerChoice.toLowerCase();
             return playerChoice;
         } else {
-            console.log("bad output from playerChoice");
+            console.log("invalid input from player.");
         }
 }
 
@@ -31,10 +29,6 @@ function getComputerChoice() {
     }
     return computerChoice;
 }
-
-// turn results into variables
-computerSelection = getComputerChoice();
-playerSelection = getPlayerChoice();
 
 //compare results
 function playRound(playerSelection, computerSelection) {
@@ -72,38 +66,38 @@ function playRound(playerSelection, computerSelection) {
     } else {
         message = message + `.`;
     }
-
+// return the completed message
     return message;
 }
 
-// print winner
-console.log(playRound(playerSelection, computerSelection));
-
-
-// function game() {
-//     // game will stop after 5 rounds are played
-//     for (i = 0; i < 5; i++) {
-//         //game can also be stopped if the player wins 3 rounds
-//         if (playRound(playerSelection, computerSelection).includes("Win")) {
-//             for (x = 0; x < 3; x++) {
-//                 getPlayerChoice();
-//                 getComputerChoice();
-//                 return playRound(playerSelection, computerSelection);
-//             }
-//         // game can also be stopped if the computer wins 3 rounds
-//         } else if (playRound(playerSelection, computerSelection).includes("Lose")) {
-//             for (o = 0; o < 3; o++) {
-//                 getPlayerChoice();
-//                 getComputerChoice();
-//                 return playRound(playerSelection, computerSelection);
-//             }
-//         } else {
-//             getPlayerChoice();
-//             getComputerChoice();
-//             return playRound(playerSelection, computerSelection);
-//         }
-//     }
-// }
-
-//broken right now, fix!
-console.log(game());
+function game() {
+    // game will stop after 5 rounds are played
+    let pWins = 0;
+    let cWins = 0;
+    for (i = 0; i < 5; i++) {
+    // initialize player and computer selection variables 
+    // and call their functions
+        computerSelection = getComputerChoice();
+        playerSelection = getPlayerChoice();
+    // create variable for results
+        results = playRound(playerSelection, computerSelection)
+    // count wins for computer and player
+        if (results.includes("Win")) {
+            pWins++
+        } else if (results.includes("Lose")) {
+            cWins++
+        }
+    // add to results string with standings b/w player and computer
+        if (pWins > cWins) {
+            results = (results + ` You are winning ${pWins}-${cWins}.`)
+        } else if (pWins === cWins) {
+            results = (results + ` You are tied ${pWins}-${cWins}.`)
+        } else {
+            results = (results + ` You are losing ${pWins}-${cWins}.`)
+        }
+    // log and alert user of results
+        console.log(results)
+        console.log(computerSelection)
+        alert(results);
+            }
+        }
