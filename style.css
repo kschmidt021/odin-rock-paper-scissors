@@ -57,5 +57,11 @@ img {
 
 #results {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#standings {
+    display: flex;
+    flex-direction: column;
 }
