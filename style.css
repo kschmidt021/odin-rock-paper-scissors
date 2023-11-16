@@ -32,6 +32,14 @@ img {
     border-radius: 50%;
 }
 
+.selected {
+    height: 150px;
+    width: 150px;
+    border: 3px solid black;
+    border-radius: 50%;
+    background-color: #b1c1ff;
+}
+
 .submit {
     display: flex;
     justify-content: center;
@@ -45,4 +53,9 @@ img {
     font-weight: 700;
     font-size: medium;
     border-radius: 20px;
+}
+
+#results {
+    display: flex;
+    justify-content: center;
 }

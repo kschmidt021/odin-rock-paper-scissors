@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
-    <script src="javascript.js"></script>
+    <script src="javascript.js" defer></script>
 </head>
 <body>
     <h1 class="header">Rock Paper Scissors</h1>
-    <div class="content">
+    <div id="player-options" class="content">
         <div class="option">
             <img id="rock" src="images/rock.svg" alt="Rock Button">
             <p class="img-label">Rock</p>
@@ -24,7 +24,11 @@
         </div>
     </div>
     <div class="submit">
-        <button class="btn">Submit</button>
+        <button id="submit-button" class="btn">Submit</button>
+    </div>
+    <div id="results">
+        <ol id="results-list">
+        </ol>
     </div>
 </body>
 </html>

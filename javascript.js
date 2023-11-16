@@ -1,57 +1,79 @@
 // call game function
 // game();
 
-// store their result
-function getPlayerChoice() {
-    playerChoice = prompt("Rock, Paper, or Scissors?");
-// Returns null value if player clicks cancel, which later 
-// allows the game to fully abort
-    if (playerChoice === null){
-        return null;
+const playerOptions = document.querySelector("#player-options");
+const submitBtn = document.querySelector("#submit-button");
+
+playerOptions.addEventListener('click', (event) => {
+    let target = event.target;
+   // target.setAttribute("class", "selected");
+   // use somewhere else, don't give a function two purposes.
+    switch(target.id) {
+        case 'rock':
+            playerSelection = 'Rock';
+            return playerSelection;
+        case 'paper':
+            playerSelection = 'Paper';
+            return playerSelection;
+        case 'scissors':
+            playerSelection = 'Scissors';
+            return playerSelection;
     }
-// sets up playerChoice to be evaluated in all lowercase
-    playerChoice = playerChoice.toLowerCase();
-    while (playerChoice != "rock" 
-        && playerChoice != "scissors" 
-        && playerChoice != "paper" 
-        && playerChoice != "r" 
-        && playerChoice != "p" 
-        && playerChoice != "s") {
-            playerChoice = prompt(`Please enter "Rock" "Paper" or "Scissors"`);
-        }
-// formats the playerChoice string to Correct Case and returns
-    if (playerChoice == "rock"
-        || playerChoice == "paper"
-        || playerChoice == "scissors") {
-            firstLetter = playerChoice.charAt(0);
-            firstLetter = firstLetter.toUpperCase();
-            notFirstLetter = playerChoice.slice(1);
-            playerChoice = (firstLetter + notFirstLetter);
-            return playerChoice;
-    // allows for shorthand for testing and the impatient
-        } else if (playerChoice == "r"){
-            playerChoice = "rock"
-            firstLetter = playerChoice.charAt(0);
-            firstLetter = firstLetter.toUpperCase();
-            notFirstLetter = playerChoice.slice(1);
-            playerChoice = (firstLetter + notFirstLetter);
-            return playerChoice;
-        } else if (playerChoice == "p"){
-            playerChoice = "paper"
-            firstLetter = playerChoice.charAt(0);
-            firstLetter = firstLetter.toUpperCase();
-            notFirstLetter = playerChoice.slice(1);
-            playerChoice = (firstLetter + notFirstLetter);
-            return playerChoice;
-        } else if (playerChoice == "s"){
-            playerChoice = "scissors"
-            firstLetter = playerChoice.charAt(0);
-            firstLetter = firstLetter.toUpperCase();
-            notFirstLetter = playerChoice.slice(1);
-            playerChoice = (firstLetter + notFirstLetter);
-            return playerChoice;
-        }
-}
+});
+
+submitBtn.addEventListener('click', displayRoundMessage);
+
+// // store their result
+// function getPlayerChoice() {
+//     playerChoice = prompt("Rock, Paper, or Scissors?");
+// // Returns null value if player clicks cancel, which later 
+// // allows the game to fully abort
+//     if (playerChoice === null){
+//         return null;
+//     }
+// // sets up playerChoice to be evaluated in all lowercase
+//     playerChoice = playerChoice.toLowerCase();
+//     while (playerChoice != "rock" 
+//         && playerChoice != "scissors" 
+//         && playerChoice != "paper" 
+//         && playerChoice != "r" 
+//         && playerChoice != "p" 
+//         && playerChoice != "s") {
+//             playerChoice = prompt(`Please enter "Rock" "Paper" or "Scissors"`);
+//         }
+// // formats the playerChoice string to Correct Case and returns
+//     if (playerChoice == "rock"
+//         || playerChoice == "paper"
+//         || playerChoice == "scissors") {
+//             firstLetter = playerChoice.charAt(0);
+//             firstLetter = firstLetter.toUpperCase();
+//             notFirstLetter = playerChoice.slice(1);
+//             playerChoice = (firstLetter + notFirstLetter);
+//             return playerChoice;
+//     // allows for shorthand for testing and the impatient
+//         } else if (playerChoice == "r"){
+//             playerChoice = "rock"
+//             firstLetter = playerChoice.charAt(0);
+//             firstLetter = firstLetter.toUpperCase();
+//             notFirstLetter = playerChoice.slice(1);
+//             playerChoice = (firstLetter + notFirstLetter);
+//             return playerChoice;
+//         } else if (playerChoice == "p"){
+//             playerChoice = "paper"
+//             firstLetter = playerChoice.charAt(0);
+//             firstLetter = firstLetter.toUpperCase();
+//             notFirstLetter = playerChoice.slice(1);
+//             playerChoice = (firstLetter + notFirstLetter);
+//             return playerChoice;
+//         } else if (playerChoice == "s"){
+//             playerChoice = "scissors"
+//             firstLetter = playerChoice.charAt(0);
+//             firstLetter = firstLetter.toUpperCase();
+//             notFirstLetter = playerChoice.slice(1);
+//             playerChoice = (firstLetter + notFirstLetter);
+//             return playerChoice;
+//         }
+// }
 
 // have computer randomly select "rock" "paper" or "scissors"
 function getComputerChoice() {
@@ -109,6 +131,15 @@ function playRound(playerSelection, computerSelection) {
     return message;
 }
 
+//add results as listed items below the submit button
+function displayRoundMessage() {
+    const resultsOl = document.querySelector("#results-list");
+    const resultsLi = document.createElement('li');
+    computerSelection = getComputerChoice();
+    resultsLi.textContent = playRound(playerSelection, computerSelection);
+    resultsOl.appendChild(resultsLi);
+}
+
 //plays the best of 5 game
 function game() {
 // game will stop after either the user or computer wins 3 rounds (best of 5)
@@ -118,10 +149,6 @@ function game() {
     // initialize player and computer selection variables 
     // and call their functions
         computerSelection = getComputerChoice();
-        playerSelection = getPlayerChoice();
-        if (playerSelection === null) {
-            return;
-        }
     // create variable for results
         results = playRound(playerSelection, computerSelection)
     // count wins for computer and player
