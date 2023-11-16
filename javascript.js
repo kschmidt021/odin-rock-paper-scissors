@@ -1,5 +1,5 @@
 // call game function
-game();
+// game();
 
 // store their result
 function getPlayerChoice() {
