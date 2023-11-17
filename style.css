@@ -42,6 +42,7 @@ body {
     display: flex;
     gap: 32px;
     padding-top: 32px;
+    background-color: #E8E9EB;
 }
 
 #player-options,
@@ -54,6 +55,10 @@ body {
     padding-top: 32px;
     padding-left: 32px;
     padding-right: 32px;
+    margin: 16px;
+    border-radius: 25px;
+    background-color: white;
+    border: 2px solid black;
 }
 
 .option,
@@ -64,8 +69,14 @@ body {
     align-items: center;
 }
 
+.choice,
+#submit-button,
+#restart-button {
+    cursor: pointer;
+}
+
 .choice:hover {
-    background-color: #3986BA;
+    background-color: #0D76B8;
 }
 
 .choice:focus {
@@ -76,14 +87,17 @@ body {
 .c-choice {
     height: 150px;
     width: 150px;
+    background-color: #C9C7C7;
 }
 
 .arena {
     display: flex;
     flex-direction: column;
     border: 3px solid black;
+    border-radius: 25px;
     align-self: stretch;
     flex-grow: 1;
+    background-color: white;
 }
 
 .standings-bar {
@@ -123,8 +137,8 @@ body {
 
 #results-list,
 #standings-text {
-    background-color: #ececee;
-    border: 1px solid #ececee;
+    background-color: #E8E9EB;
+    border: 1px solid #E8E9EB;
     border-radius: 25px; 
 }
 
@@ -135,13 +149,13 @@ body {
 }
 .btn {
     padding: 16px 32px;
-    border: 2px solid #A3B6FF;
-    background-color: #F1F4FF;
+    border: 2px solid black;
+    background-color: #FFC800;
     font-weight: 700;
     font-size: medium;
     border-radius: 20px;
 }
 
 .btn:hover {
-    background-color: #C6D8D3;
+    background-color: #FFBF00;
 }
