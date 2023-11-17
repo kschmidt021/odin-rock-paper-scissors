@@ -1,17 +1,19 @@
-// call game function
-// game();
-
 //initialize win counter globally
 let pWins = 0;
 let cWins = 0;
-
+// initialize clickable elements globally
 const playerOptions = document.querySelector("#player-options");
 const submitBtn = document.querySelector("#submit-button");
+const restartBtn = document.querySelector("#restart-button");
+
+// function to reload the page with the newly created restart button
+restartBtn.addEventListener("click", refreshPage);
+function refreshPage() {
+    window.location.reload();
+}
 
 playerOptions.addEventListener('click', (event) => {
     let target = event.target;
-   // target.setAttribute("class", "selected");
-   // use somewhere else, don't give a function two purposes.
     switch(target.id) {
         case 'rock':
             playerSelection = 'Rock';
@@ -102,6 +104,7 @@ function displayRoundMessage() {
     return playRound(playerSelection, computerSelection);
 }
 
+// returns the text for the current standings, rewrites every time.
 function displayStandings() {
     const standingsDiv = document.querySelector("#standings");
     const standingsPara = document.querySelector('#standings-text');
@@ -116,21 +119,28 @@ function displayStandings() {
     standingsDiv.appendChild(standingsPara);
 }
 
+// returns the text for the winner
 function displayWinner() {
     const standingsDiv = document.querySelector("#standings");
     const standingsPara = document.querySelector('#standings-text');
     if (pWins >= 5) {
         standingsPara.textContent = "";
-        standingsPara.textContent = (`Congratulations! You win ${pWins}-${cWins}.`);
+        standingsPara.textContent = (`Congratulations! \n You win ${pWins}-${cWins}.`);
         return
     } else if (cWins >= 5) {
         standingsPara.textContent = "";
-        standingsPara.textContent = (`Sorry, you lose ${pWins}-${cWins}. \n Score one for the machines.`);
+        standingsPara.textContent = (`Sorry, you lose ${pWins}-${cWins}. Score one for the machines.`);
         return
     } else {
         console.log("error in game()")
     }
 }
+
+function removeSubmit() {
+    const buttons = document.querySelector('.submit');
+    buttons.removeChild(submitBtn);
+}
+
 
 //plays the best of 5 game
 function game() {
@@ -143,9 +153,10 @@ function game() {
         cWins++;
     }
     displayStandings();
-// alert the results of game
+// calls displayWinner once one of the participants has won
     if (pWins == 5 ||
         cWins == 5) {
         displayWinner();
+        removeSubmit();
     }
 }
