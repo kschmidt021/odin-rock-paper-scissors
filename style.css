@@ -13,6 +13,7 @@ body {
 
 .content {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 32px;
     padding-top: 32px;
@@ -47,7 +48,7 @@ img {
 }
 
 .btn {
-    padding: 16px;
+    padding: 16px 32px;
     border: 2px solid #A3B6FF;
     background-color: #F1F4FF;
     font-weight: 700;
@@ -58,10 +59,19 @@ img {
 #results {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+#results-list,
+#standings {
+    background-color: #F1F4FF;
+    border: 2px solid #A3B6FF;
+    width: 200px;
+    height: 200px;
+    flex-basis: auto;
 }
 
 #standings {
-    display: flex;
-    flex-direction: column;
+    text-align: center;
 }
