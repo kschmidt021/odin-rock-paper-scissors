@@ -8,30 +8,56 @@
     <script src="javascript.js" defer></script>
 </head>
 <body>
-    <h1 class="header">Rock Paper Scissors</h1>
-    <div id="player-options" class="content">
-        <div class="option">
-            <img id="rock" src="images/rock.svg" alt="Rock Button" tabindex="1">
-            <p class="img-label">Rock</p>
-        </div>
-        <div class="option">
-            <img id="paper" src="images/paper.svg" alt="Paper Button" tabindex="2">
-            <p class="img-label">Paper</p>
-        </div>
-        <div class="option">       
-            <img id= "scissors" src="images/scissors.svg" alt="Scissors Button" tabindex="3">
-            <p class="img-label">Scissors</p>
+    <div class="header">
+        <div class="h-icons">
+            <img id="rock-icon" class="icon" src="images/rock.svg" alt="Rock">
+            <img id="paper-icon" class="icon" src="images/paper.svg" alt="Paper">
+            <img id="scissors-icon" class="icon" src="images/scissors.svg" alt="Scissors">
         </div>
     </div>
-    <div class="submit">
-        <button id="submit-button" class="btn" tabindex="4">Submit</button>
-        <button id="restart-button" class="btn" tabindex="5">New Game</button>
-    </div>
-    <div id="results">
-        <ol id="results-list">
-        </ol>
-        <div id="standings">
-            <p id="standings-text"></p>
+    <div class="content">
+        <div id="player-options">
+            <div class="option">
+                <img id="rock" class="choice"src="images/rock.svg" alt="Rock Button" tabindex="1">
+                <p class="img-label">Rock</p>
+            </div>
+            <div class="option">
+                <img id="paper" class="choice" src="images/paper.svg" alt="Paper Button" tabindex="2">
+                <p class="img-label">Paper</p>
+            </div>
+            <div class="option">       
+                <img id= "scissors" class="choice" src="images/scissors.svg" alt="Scissors Button" tabindex="3">
+                <p class="img-label">Scissors</p>
+            </div>
+        </div>
+        <div class="arena">
+            <div class="standings-bar">
+                <p id="standings-text">0 - 0</p>
+                <button id="restart-button" class="btn" tabindex="5">New Game</button>
+            </div>
+            <div class="battle">
+            </div>
+            <div class="results-bar">
+                <div class="submit">
+                    <button id="submit-button" class="btn" tabindex="4">Submit</button>
+                </div>
+                <ol reversed id="results-list">
+                </ol>
+            </div>
+        </div>
+        <div id="computer-options">
+            <div class="c-option">
+                <img id="c-rock" class="c-choice"src="images/rock.svg" alt="Rock Button" tabindex="1">
+                <p class="img-label">Rock</p>
+            </div>
+            <div class="c-option">
+                <img id="c-paper" class="c-choice" src="images/paper.svg" alt="Paper Button" tabindex="2">
+                <p class="img-label">Paper</p>
+            </div>
+            <div class="c-option">       
+                <img id= "c-scissors" class="c-choice" src="images/scissors.svg" alt="Scissors Button" tabindex="3">
+                <p class="img-label">Scissors</p>
+            </div>
         </div>
     </div>
 </body>

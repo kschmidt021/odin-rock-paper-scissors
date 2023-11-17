@@ -100,32 +100,26 @@ function displayRoundMessage() {
 // needed in order to have the variable defined for
     computerSelection = getComputerChoice();
     resultsLi.textContent = playRound(playerSelection, computerSelection);
-    resultsOl.appendChild(resultsLi);
+    resultsOl.prepend(resultsLi);
     return playRound(playerSelection, computerSelection);
 }
 
 // returns the text for the current standings, rewrites every time.
 function displayStandings() {
-    const standingsDiv = document.querySelector("#standings");
+    const standingsDiv = document.querySelector(".standings-bar");
     const standingsPara = document.querySelector('#standings-text');
     standingsPara.textContent = "";
-    if (pWins > cWins) {
-        standingsPara.textContent = (`You are winning ${pWins}-${cWins}.`)
-    } else if (pWins === cWins) {
-        standingsPara.textContent = (`You are tied ${pWins}-${cWins}.`)
-    } else {
-        standingsPara.textContent = (`You are losing ${pWins}-${cWins}.`)
-    }
-    standingsDiv.appendChild(standingsPara);
+    standingsPara.textContent = (`${pWins} - ${cWins}`)
+    standingsDiv.prepend(standingsPara);
 }
 
 // returns the text for the winner
 function displayWinner() {
-    const standingsDiv = document.querySelector("#standings");
+    const standingsDiv = document.querySelector(".standings-bar");
     const standingsPara = document.querySelector('#standings-text');
     if (pWins >= 5) {
         standingsPara.textContent = "";
-        standingsPara.textContent = (`Congratulations! \n You win ${pWins}-${cWins}.`);
+        standingsPara.textContent = (`Congratulations! You win ${pWins}-${cWins}.`);
         return
     } else if (cWins >= 5) {
         standingsPara.textContent = "";
@@ -137,8 +131,8 @@ function displayWinner() {
 }
 
 function removeSubmit() {
-    const buttons = document.querySelector('.submit');
-    buttons.removeChild(submitBtn);
+    const submitDiv = document.querySelector('.submit');
+    submitDiv.removeChild(submitBtn);
 }
 
 
