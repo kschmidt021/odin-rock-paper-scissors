@@ -41,7 +41,14 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-submitBtn.addEventListener('click', game);
+submitBtn.addEventListener('click', (event) => {
+    if (pWins >= 5 || cWins >= 5) {
+        event.preventDefault();
+        alert("sorry game over")
+    } else {
+        game();
+    }
+});
 
 //compare results
 function playRound(playerSelection, computerSelection) {
@@ -85,8 +92,10 @@ function playRound(playerSelection, computerSelection) {
 
 //add results as listed items below the submit button
 function displayRoundMessage() {
+// Create li tags for results
     const resultsOl = document.querySelector("#results-list");
     const resultsLi = document.createElement('li');
+// needed in order to have the variable defined for
     computerSelection = getComputerChoice();
     resultsLi.textContent = playRound(playerSelection, computerSelection);
     resultsOl.appendChild(resultsLi);
@@ -98,13 +107,29 @@ function displayStandings() {
     const standingsPara = document.querySelector('#standings-text');
     standingsPara.textContent = "";
     if (pWins > cWins) {
-        standingsPara.textContent = (` You are winning ${pWins}-${cWins}.`)
+        standingsPara.textContent = (`You are winning ${pWins}-${cWins}.`)
     } else if (pWins === cWins) {
-        standingsPara.textContent = (` You are tied ${pWins}-${cWins}.`)
+        standingsPara.textContent = (`You are tied ${pWins}-${cWins}.`)
     } else {
-        standingsPara.textContent = (` You are losing ${pWins}-${cWins}.`)
+        standingsPara.textContent = (`You are losing ${pWins}-${cWins}.`)
     }
     standingsDiv.appendChild(standingsPara);
+}
+
+function displayWinner() {
+    const standingsDiv = document.querySelector("#standings");
+    const standingsPara = document.querySelector('#standings-text');
+    if (pWins >= 5) {
+        standingsPara.textContent = "";
+        standingsPara.textContent = (`Congratulations! You win ${pWins}-${cWins}.`);
+        return
+    } else if (cWins >= 5) {
+        standingsPara.textContent = "";
+        standingsPara.textContent = (`Sorry, you lose ${pWins}-${cWins}. \n Score one for the machines.`);
+        return
+    } else {
+        console.log("error in game()")
+    }
 }
 
 //plays the best of 5 game
@@ -119,13 +144,8 @@ function game() {
     }
     displayStandings();
 // alert the results of game
-    if (pWins == 5) {
-        alert(`Congratulations! You win!`)
-        return
-    } else if (cWins == 5) {
-        alert(`You lose. Score one for the machines.`)
-        return
-    } else {
-        console.log("error in game()")
+    if (pWins == 5 ||
+        cWins == 5) {
+        displayWinner();
     }
 }
