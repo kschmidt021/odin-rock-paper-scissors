@@ -2,6 +2,28 @@ body {
     font-family: Arial, Tahoma, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 925px) {
+    #computer-options {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 893px) {
+    #player-options {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 637px) {
+    .content {
+        flex-direction: column;
+    }
 }
 
 .header {
@@ -43,6 +65,8 @@ body {
     gap: 32px;
     padding-top: 32px;
     background-color: #E8E9EB;
+    flex-wrap: wrap;
+    flex-basis: auto;
 }
 
 #player-options,
@@ -50,7 +74,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: start;
-    flex-direction: column;
     gap: 32px;
     padding-top: 32px;
     padding-left: 32px;
@@ -59,6 +82,8 @@ body {
     border-radius: 25px;
     background-color: white;
     border: 2px solid black;
+    flex-shrink: 1;
+    flex-basis: auto;
 }
 
 .option,
@@ -67,6 +92,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-basis: auto;
+    flex-shrink: 1;
 }
 
 .choice,
@@ -85,9 +112,12 @@ body {
 
 .choice,
 .c-choice {
-    height: 150px;
-    width: 150px;
     background-color: #C9C7C7;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    flex-shrink: 0;
 }
 
 .arena {
@@ -98,6 +128,8 @@ body {
     align-self: stretch;
     flex-grow: 1;
     background-color: white;
+    flex-shrink: 1;
+    margin: 6px;
 }
 
 .standings-bar {
