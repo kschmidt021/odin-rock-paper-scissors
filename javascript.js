@@ -130,6 +130,22 @@ function displayWinner() {
     }
 }
 
+function displayComputerChoice() {
+    let cRock = document.querySelector('#c-rock');
+    let cPaper = document.querySelector('#c-paper');
+    let cScissors = document.querySelector('#c-scissors');
+    cRock.style.backgroundColor = '#C9C7C7';
+    cPaper.style.backgroundColor = '#C9C7C7';
+    cScissors.style.backgroundColor = '#C9C7C7';
+    if (getComputerChoice() == 'Rock') {
+        cRock.style.backgroundColor = '#AE1717';
+    } else if (getComputerChoice() == 'Paper') {
+        cPaper.style.backgroundColor = '#AE1717'; 
+    } else if (getComputerChoice() == 'Scissors') {
+        cScissors.style.backgroundColor = '#AE1717';
+    }
+}
+
 function removeSubmit() {
     const submitDiv = document.querySelector('.submit');
     submitDiv.removeChild(submitBtn);
@@ -146,6 +162,7 @@ function game() {
     } else if (roundMessage.includes("Lose")) {
         cWins++;
     }
+    displayComputerChoice();
     displayStandings();
 // calls displayWinner once one of the participants has won
     if (pWins == 5 ||
